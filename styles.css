@@ -1,0 +1,53 @@
+body {
+  background-color: green;
+}
+
+.navbar p {
+  display: inline-block;
+}
+
+.navbar {
+  background-color: yellow;
+  margin: 20px;
+}
+
+.artistSelect {
+  background-color: orange;
+  float: left;
+}
+
+.artistSelect select {
+  display: block;
+  margin: 20px 0;
+}
+
+
+.artist {
+  width: 500px;
+  margin: 20px;
+}
+
+.radioButtonAlign input {
+  width: 70%;
+}
+
+.song {
+  background-color:pink;
+  min-width: 350px;
+  margin: 0 20px; 
+  float: center;
+}
+
+.song h3 {
+  color: white;
+}
+
+.song p {
+  color:grey;
+}
+
+fieldset {
+  border-width: 12px;
+  /* border-style: double; */
+  border-color: red;
+}
