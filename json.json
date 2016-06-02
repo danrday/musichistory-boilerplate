@@ -1,8 +1,4 @@
-# Music History #4
-
-Added a JSON file with the following song information: 
-
-```[
+[
     {"Song":"Purple Rain", "Artist":"Prince", "Album":"Purple Rain"}, 
     {"Song":"Legs", "Artist":"ZZTop", "Album":"Eliminator"}, 
     {"Song":"The Logical Song", "Artist":"Supertramp", "Album":"Breakfast in America"}, 
@@ -11,6 +7,3 @@ Added a JSON file with the following song information:
     {"Song":"Ironic", "Artist":"Alanis Morisette", "Album":"Jagged Little Pill"}, 
     {"Song":"Let's Go Crazy", "Artist":"Prince", "Album":"Purple Rain"}
 ]
-```
-
-And added javascript to load the JSON file, parse it and insert it into the DOM's "song list" section.
