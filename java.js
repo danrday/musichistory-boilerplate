@@ -1,11 +1,26 @@
 
 
+var elAddMusic = document.getElementById("elAddMusic");
+
+var addArtist = document.getElementById("addArtist");
+
+var addArtistButton= document.getElementById("addArtistButton");
+
+addArtistButton.addEventListener("click", classTrigger);
+
+elAddMusic.addEventListener("click", classTrigger);
+
+function classTrigger() {
+  addArtist.classList.toggle("visibility");
+};
+
+
 function executeThisCodeAfterFileIsLoaded() {
   var data = JSON.parse(event.target.responseText);
   var listSongs = document.getElementById("listSongs")
   var newHTML = "";
   for (var x in data) {
-  newHTML += `<h3> ${data[x].Song} </h3><p> ${data[x].Artist} | ${data[x].Album}</p>`
+  newHTML += `<h3> ${data[x].Song} </h3><p> ${data[x].Artist} | ${data[x].Album}</p><input type="button" id="deleteButton" value="DESTROY">`
   }
  listSongs.innerHTML = newHTML;
 }
