@@ -2,27 +2,79 @@
 
 var elAddMusic = document.getElementById("elAddMusic");
 
+var elDeleteMusic = document.getElementsByClassName("deleteButton");
+
+function addEventListeners() {
+for (var i = 0; i< elDeleteMusic.length; i++) {
+  elDeleteMusic[i].addEventListener("click", deleteItem)
+}
+}
+
+function deleteItem() {
+  var elToDelete = event.target.closest("div");
+  var idToDelete = elToDelete.id.split("--")[1];
+  songData.splice(idToDelete, 1);
+  songPrinter();
+};
+
 var addArtist = document.getElementById("addArtist");
 
 var addArtistButton= document.getElementById("addArtistButton");
 
 addArtistButton.addEventListener("click", classTrigger);
 
+document.getElementById("newAlbum").addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        addArtistButton.click();
+    }
+});
+
 elAddMusic.addEventListener("click", classTrigger);
+
+var songData = {};
+
+addArtistButton.addEventListener("click", addNewArtist);
+
+function addNewArtist() {
+  var artist = document.getElementById("newArtist");
+  var song = document.getElementById("newSong");
+  var album = document.getElementById("newAlbum");
+
+  var newObj = { "Song": song.value, "Artist": artist.value, "Album": album.value}
+
+  songData.unshift(newObj);
+
+  songPrinter();
+
+  console.log(songData);
+};
+
+var elArtistSelect = document.getElementById("artistSelect");
+var elListSongs = document.getElementById("listSongs");
 
 function classTrigger() {
   addArtist.classList.toggle("visibility");
+  elArtistSelect.classList.toggle("visibility");
+  elListSongs.classList.toggle("visibility");
 };
 
 
-function executeThisCodeAfterFileIsLoaded() {
-  var data = JSON.parse(event.target.responseText);
-  var listSongs = document.getElementById("listSongs")
+function songPrinter() {
   var newHTML = "";
-  for (var x in data) {
-  newHTML += `<h3> ${data[x].Song} </h3><p> ${data[x].Artist} | ${data[x].Album}</p><input type="button" id="deleteButton" value="DESTROY">`
+  for (var x in songData) {
+  newHTML += `<div id=song--${x}> <h3> ${songData[x].Song} </h3><p> ${songData[x].Artist} | ${songData[x].Album}</p><input type="button" class="deleteButton" value="DESTROY"></div>`
   }
  listSongs.innerHTML = newHTML;
+ addEventListeners();
+}
+
+
+function executeThisCodeAfterFileIsLoaded() {
+  songData = JSON.parse(event.target.responseText);
+  var listSongs = document.getElementById("listSongs")
+  
+  songPrinter();
 }
 
 var myRequest = new XMLHttpRequest();
