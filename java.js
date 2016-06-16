@@ -78,19 +78,29 @@ function executeThisCodeAfterFileIsLoaded() {
 }
 
 var myRequest = new XMLHttpRequest();
-
 myRequest.addEventListener("load", executeThisCodeAfterFileIsLoaded);
-// myRequest.addEventListener('load', function(){
-//   console.log("HEY Listen");
-// });
-
-// myRequest.addEventListener("error", executeThisIfXHRFails);
-
 myRequest.open("GET", "json.json");
-
 myRequest.send();
 
 
+var moreButton = document.getElementById("moreButton");
+
+moreButton.addEventListener("click", addMoreSongs);
+
+function addMoreSongs() {
+  var myRequest = new XMLHttpRequest();
+  myRequest.open("GET", "json2.json");
+  myRequest.send();
+  myRequest.addEventListener("load", addNewMusic);
+};
+
+function addNewMusic() {
+  var newSongData = JSON.parse(event.target.responseText);
+  newSongData.forEach(function(object){
+    songData.unshift(object);
+    songPrinter();
+  });
+  }
 
 
 // var songs = [];

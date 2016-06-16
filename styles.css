@@ -22,6 +22,11 @@ body {
   margin: 20px 0;
 }
 
+#moreButton {
+  display: inline;
+  float: right;
+}
+
 #addArtist {
   margin: 20px;
   background-color: chartreuse;
