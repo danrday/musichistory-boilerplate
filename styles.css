@@ -22,6 +22,27 @@ body {
   margin: 20px 0;
 }
 
+#moreButton {
+  display: inline;
+  float: right;
+}
+
+#addArtist {
+  margin: 20px;
+  background-color: chartreuse;
+}
+
+.addArtist {
+  background-color: #green;
+  display: inline-block;
+  /*margin-left: 20px;*/
+  /*float: left;*/
+  /*margin: auto;*/
+}
+
+.visibility {
+  display: none;
+}
 
 .artist {
   /* width: 500px; */
