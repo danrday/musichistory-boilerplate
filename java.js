@@ -1,23 +1,25 @@
+var musicHistory = (function () {
+
+// var elAddMusic = document.getElementById("elAddMusic");
+var $elAddMusic = $("#elAddMusic");
+
+// var elDeleteMusic = document.getElementsByClassName("deleteButton");
+var $elDeleteMusic = $(".deleteButton");
 
 
-var elAddMusic = document.getElementById("elAddMusic");
-
-var elDeleteMusic = document.getElementsByClassName("deleteButton");
-
-function addEventListeners() {
-for (var i = 0; i< elDeleteMusic.length; i++) {
-  elDeleteMusic[i].addEventListener("click", deleteItem)
-}
-}
+// function addEventListeners() {
+//   $(".deleteButton").click(deleteItem);
+// }
 
 function deleteItem() {
+  console.log("HEY THAR");
   var elToDelete = event.target.closest("div");
   var idToDelete = elToDelete.id.split("--")[1];
   songData.splice(idToDelete, 1);
   songPrinter();
 };
 
-var addArtist = document.getElementById("addArtist");
+var $addArtist = $("#addArtist");
 
 var addArtistButton= document.getElementById("addArtistButton");
 
@@ -30,7 +32,7 @@ document.getElementById("newAlbum").addEventListener("keyup", function(event) {
     }
 });
 
-elAddMusic.addEventListener("click", classTrigger);
+$elAddMusic.click(classTrigger);
 
 var songData = {};
 
@@ -48,15 +50,16 @@ function addNewArtist() {
   songPrinter();
 
   console.log(songData);
+
 };
 
-var elArtistSelect = document.getElementById("artistSelect");
-var elListSongs = document.getElementById("listSongs");
+var $elArtistSelect = $("#artistSelect");
+var $elListSongs = $("#listSongs");
 
 function classTrigger() {
-  addArtist.classList.toggle("visibility");
-  elArtistSelect.classList.toggle("visibility");
-  elListSongs.classList.toggle("visibility");
+  $addArtist.toggleClass("visibility");
+  $elArtistSelect.toggleClass("visibility");
+  $elListSongs.toggleClass("visibility");
 };
 
 
@@ -66,7 +69,10 @@ function songPrinter() {
   newHTML += `<div id=song--${x}> <h3> ${songData[x].Song} </h3><p> ${songData[x].Artist} | ${songData[x].Album}</p><input type="button" class="deleteButton" value="DESTROY"></div>`
   }
  listSongs.innerHTML = newHTML;
- addEventListeners();
+ // addEventListeners();
+  $(".deleteButton").click(deleteItem);
+
+ console.log("$elDeleteMusic", $(".deleteButton").length);
 }
 
 
@@ -192,5 +198,5 @@ function addNewMusic() {
 // replaceHTML();
 
 
-
+})();
 
